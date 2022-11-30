@@ -42,7 +42,7 @@ struct CurrencyARate: Codable,Identifiable {
   
   }
 
-    static let example = CurrencyARate(currency: "Euro radziecki", id: "XXX", mid: 5.4321)
+    static let example = CurrencyARate(currency: "Euro radziecki", id: "EUR", mid: 5.4321)
 
 }
 
@@ -81,6 +81,6 @@ struct DetailARate: Codable ,Identifiable{
   
   }
 
-
+    static let example = DetailARate(id: "NBP/23/2022XXXXYYY", effectiveDate: "2022-10-10", mid: 4.9023)
 
 }

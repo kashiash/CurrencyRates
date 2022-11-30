@@ -12,21 +12,24 @@ struct DetailView: View {
     @State private var rates = [DetailARate]()
     var body: some View {
         VStack{
-            Text(rate.id).font(.title)
             HStack{
-                /*@START_MENU_TOKEN@*/Text(rate.currency)/*@END_MENU_TOKEN@*/.font(.callout)
-                Text(String(format: "%.4f",rate.mid))
-                    .foregroundColor(.red)
-                    .background{
-                        RoundedRectangle(cornerRadius: 5,style:.continuous)
-                            .stroke(Color.white.opacity(0.2),lineWidth: 1)
-                    }
+                VStack(alignment: .leading){
+                    Text(rate.id)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.title)
+                    Text(rate.currency)
+                        .foregroundColor(.green)
+                        .font(.footnote)
+                }
+                VStack(alignment: .trailing){
+                    Text(String(format: "%.4f",rate.mid))
+                        .font(.title)
+                        .foregroundColor(.red)
+                }
             }
             List(rates) { item in
                 HStack{
-                   // Text(item.id).font(.callout)
-                    Text(item.effectiveDate).font(.title)
-                    Text(String(format: "%.4f",item.mid)).font(.title).foregroundColor(.red)
+                    CurrencyADetailRowView(rate: item)
                 }
             }
             
@@ -61,5 +64,6 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(rate: CurrencyARate.example)
+        DetailView(rate: CurrencyARate.example).preferredColorScheme(.dark)
     }
 }
