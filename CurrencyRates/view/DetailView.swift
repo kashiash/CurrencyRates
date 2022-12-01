@@ -23,11 +23,7 @@ struct DetailView: View {
                     }
             }
             List(rates) { item in
-                HStack{
-                   // Text(item.id).font(.callout)
-                    Text(item.effectiveDate).font(.title)
-                    Text(String(format: "%.4f",item.mid)).font(.title).foregroundColor(.red)
-                }
+                DetailARateRowView(rate: item)
             }
             
         }
@@ -61,5 +57,6 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(rate: CurrencyARate.example)
+        DetailView(rate: CurrencyARate.example).preferredColorScheme(.dark)
     }
 }
